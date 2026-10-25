@@ -1,0 +1,6 @@
+[Unit]
+Description=Notice backup (お知らせサイトのバックアップ)
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/notice-backup.sh
