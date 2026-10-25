@@ -88,6 +88,7 @@ ops() {   # ハンズオン11 の終わり
 }
 
 [ "$N" -ge 3 ] && app
+[ "$N" -ge 4 ] && { rpm -q bind-utils >/dev/null || dnf -y -q install bind-utils; }   # ハンズオン3 で入れた dig
 [ "$N" -ge 5 ] && fw
 [ "$N" -ge 6 ] && web
 [ "$N" -ge 7 ] && api
