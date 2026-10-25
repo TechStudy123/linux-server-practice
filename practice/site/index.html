@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>社内のお知らせ</title>
+<style>
+body { font-family: "Meiryo", sans-serif; margin: 2rem; color: #0B3D5C; }
+h1 { border-left: 8px solid #E8622C; padding-left: .5rem; }
+li { margin: .4rem 0; }
+.note { color: #555; font-size: .9rem; }
+</style>
+</head>
+<body>
+<h1>社内のお知らせ</h1>
+<p class="note">新しいお知らせ（/api/notices から読み込みます）</p>
+<ul id="list"><li>読み込み中…</li></ul>
+<script>
+fetch("/api/notices").then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then(items => { document.getElementById("list").innerHTML =
+    items.map(n => `<li>${n.date}　${n.title}</li>`).join(""); })
+  .catch(e => { document.getElementById("list").innerHTML = `<li>お知らせを読み込めません（${e.message}）</li>`; });
+</script>
+</body>
+</html>
