@@ -1,0 +1,9 @@
+[Unit]
+Description=Notice backup every day (毎日のバックアップ)
+
+[Timer]
+OnCalendar=*-*-* 03:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target
